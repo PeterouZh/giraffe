@@ -590,9 +590,9 @@ class Renderer(object):
         if is_full_rotation:
             idx_paper = np.linspace(
                 0, n_steps - n_steps // img_n_steps, img_n_steps
-            ).astype(np.int)
+            ).astype(np.int64)
         else:
-            idx_paper = np.linspace(0, n_steps - 1, img_n_steps).astype(np.int)
+            idx_paper = np.linspace(0, n_steps - 1, img_n_steps).astype(np.int64)
         for idx in range(batch_size):
             img_grid = imgs[idx_paper, idx]
             save_image(make_grid(
