@@ -1,14 +1,16 @@
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
-from im2scene.common import (
-    arange_pixels, image_points_to_world, origin_to_world
-)
+# from im2scene.common import (
+#     arange_pixels, image_points_to_world, origin_to_world
+# )
 import numpy as np
 from scipy.spatial.transform import Rotation as Rot
 # from im2scene.camera import get_camera_mat, get_random_pose, get_camera_pose
 
 from exp.comm.giraffe_utils.camera import get_camera_mat, get_random_pose, get_camera_pose
+from exp.comm.giraffe_utils.common import arange_pixels, image_points_to_world, origin_to_world
+
 
 class Generator(nn.Module):
     ''' GIRAFFE Generator Class.
@@ -93,7 +95,7 @@ class Generator(nn.Module):
                 return_alpha_map=False,
                 not_render_background=False,
                 only_render_background=False):
-        
+
         if latent_codes is None:
             latent_codes = self.get_latent_codes(batch_size)
 
@@ -394,11 +396,17 @@ class Generator(nn.Module):
         object_existance = object_existance.astype(np.bool)
         return object_existance
 
-    def volume_render_image(self, latent_codes, camera_matrices,
-                            transformations, bg_rotation, mode='training',
-                            it=0, return_alpha_map=False,
+    def volume_render_image(self,
+                            latent_codes,
+                            camera_matrices,
+                            transformations,
+                            bg_rotation,
+                            mode='training',
+                            it=0,
+                            return_alpha_map=False,
                             not_render_background=False,
                             only_render_background=False):
+
         res = self.resolution_vol
         device = self.device
         n_steps = self.n_ray_samples
