@@ -212,7 +212,7 @@ class Generator(nn.Module):
                             val_r=[0.5],
                             batch_size=32,
                             to_device=True):
-        
+
         device = self.device
         s = self.bounding_box_generator.get_scale(
             batch_size=batch_size, val=val_s)
