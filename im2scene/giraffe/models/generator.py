@@ -206,9 +206,13 @@ class Generator(nn.Module):
             s, t, R = s.to(device), t.to(device), R.to(device)
         return s, t, R
 
-    def get_transformations(self, val_s=[[0.5, 0.5, 0.5]],
-                            val_t=[[0.5, 0.5, 0.5]], val_r=[0.5],
-                            batch_size=32, to_device=True):
+    def get_transformations(self,
+                            val_s=[[0.5, 0.5, 0.5]],
+                            val_t=[[0.5, 0.5, 0.5]],
+                            val_r=[0.5],
+                            batch_size=32,
+                            to_device=True):
+        
         device = self.device
         s = self.bounding_box_generator.get_scale(
             batch_size=batch_size, val=val_s)
