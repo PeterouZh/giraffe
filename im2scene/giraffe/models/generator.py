@@ -6,8 +6,9 @@ from im2scene.common import (
 )
 import numpy as np
 from scipy.spatial.transform import Rotation as Rot
-from im2scene.camera import get_camera_mat, get_random_pose, get_camera_pose
+# from im2scene.camera import get_camera_mat, get_random_pose, get_camera_pose
 
+from exp.comm.giraffe_utils.camera import get_camera_mat, get_random_pose, get_camera_pose
 
 class Generator(nn.Module):
     ''' GIRAFFE Generator Class.
