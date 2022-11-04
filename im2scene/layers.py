@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torch.nn.functional as F
-from kornia.filters import filter2D, filter2d
+from kornia.filters import filter2d
 import torch
 
 
